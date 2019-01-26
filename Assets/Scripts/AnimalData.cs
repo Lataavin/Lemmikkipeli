@@ -5,35 +5,25 @@ using UnityEngine;
 public class AnimalData : ScriptableObject
 {
     [SerializeField]
-    private List<Animal.PatternDefinition> _patterns = new List<Animal.PatternDefinition>();
+    private List<PatternDefinition> _patterns = new List<PatternDefinition>();
     [SerializeField]
     private Material _defaultPattern;
     [SerializeField]
-    private List<Animal.SpriteDefinition> _sprites = new List<Animal.SpriteDefinition>();
+    private List<SpriteDefinition> _visuals = new List<SpriteDefinition>();
     [SerializeField]
-    private Sprite _defaultSprite;
+    private AnimatorOverrideController _defaultVisuals;
 
-    public Material GetPattern(string name)
+    public void SetVisuals(Animator animator, SpriteRenderer renderer)
     {
-        for (var i = 0; i < _patterns.Count; ++i)
+        animator.runtimeAnimatorController = SpriteDefinition.GetDefinition(_visuals);
+        if (animator.runtimeAnimatorController == null)
         {
-            if (_patterns[i].Name == name)
-            {
-                return _patterns[i].Material;
-            }
+            animator.runtimeAnimatorController = _defaultVisuals;
         }
-        return _defaultPattern;
-    }
-
-    public Sprite GetSprite(string name)
-    {
-        for (var i = 0; i < _sprites.Count; ++i)
+        renderer.material = PatternDefinition.GetDefinition(_patterns);
+        if (renderer.material = null)
         {
-            if (_sprites[i].Name == name)
-            {
-                return _sprites[i].Sprite;
-            }
+            renderer.material = _defaultPattern;
         }
-        return _defaultSprite;
     }
 }

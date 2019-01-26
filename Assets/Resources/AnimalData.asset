@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: AnimalData
   m_EditorClassIdentifier: 
   _patterns:
-  - Name: 
-    Material: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+  - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+    Weight: 1
   _defaultPattern: {fileID: 0}
-  _sprites:
-  - Name: 
-    Sprite: {fileID: 21300000, guid: 96e3258547fe9b94ea6ed5da08235332, type: 3}
-  _defaultSprite: {fileID: 21300000, guid: 96e3258547fe9b94ea6ed5da08235332, type: 3}
+  _visuals:
+  - Value: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
+    Weight: 1
+  _defaultVisuals: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
