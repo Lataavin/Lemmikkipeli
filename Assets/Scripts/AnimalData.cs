@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "AnimalData.asset", menuName = "Animal/AnimalData")]
 public class AnimalData : ScriptableObject
 {
     [SerializeField]
