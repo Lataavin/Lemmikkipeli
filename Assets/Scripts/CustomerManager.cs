@@ -18,6 +18,8 @@ public class CustomerManager : MonoBehaviour
         //   DontDestroyOnLoad(gameObject);
     }
 
+    public CustomerData CustomerData;
+
     private List<Customer> customers = new List<Customer>();
     public List<Customer> Customers { get { return customers; } set { customers = value; } }
 

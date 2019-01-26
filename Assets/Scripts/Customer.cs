@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
 
     public SpriteRenderer myRend;
     public SpriteRenderer wantRend;
-    public SpriteRenderer wantRend2;
+    public GameObject wantRendGameObject;
 
     public Transform hpPivot;
     public SpriteRenderer hpBar;
@@ -25,17 +25,18 @@ public class Customer : MonoBehaviour
         CheckWant();
         isInstantiated = true;
         this.enabled = false;
+        wantRendGameObject.SetActive(false);
+        CustomerManager.instance.CustomerData.SetCustomerVisuals(myRend);
     }
 
     void Start()
     {
         if (!isInstantiated)
         {
-            CustomerManager.instance.Customers.Add(this);
-            CheckWant();
-            this.enabled = false;
+            OnInstantiate();
         }
     }
+
     void Update()
     {
         PatienceTimer += Time.deltaTime / patience;
@@ -66,12 +67,7 @@ public class Customer : MonoBehaviour
         CheckWant();
         wantRend.sprite = Want.Rend.sprite;
         wantRend.material = Want.Rend.material;
-        wantRend.enabled = true;
-
-        wantRend2.sprite = wantRend.sprite;
-        wantRend2.material = wantRend.material;
-        wantRend2.enabled = true;
-
+        wantRendGameObject.SetActive(true);
         hpBar.enabled = true;
         hpBar.color = CustomerManager.instance.GetHpColor(0);
 
