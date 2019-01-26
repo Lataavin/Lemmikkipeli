@@ -15,9 +15,11 @@ MonoBehaviour:
   _patterns:
   - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
     Weight: 1
-  - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+  - Value: {fileID: 2100000, guid: 31f3f2e4d5f09a540aec7171f6617b7b, type: 2}
     Weight: 1
-  _defaultPattern: {fileID: 2100000, guid: 31f3f2e4d5f09a540aec7171f6617b7b, type: 2}
+  - Value: {fileID: 2100000, guid: 80834688329caa946959a0096e9b5b03, type: 2}
+    Weight: 1
+  _defaultPattern: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
   _visuals:
   - Value: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
     Weight: 1
@@ -26,5 +28,7 @@ MonoBehaviour:
   - Value: {fileID: 22100000, guid: 3b1230ba5ee5f364cba424e153c5cda5, type: 2}
     Weight: 1
   - Value: {fileID: 22100000, guid: 55bf5d69edb1ad546a0c677e99171deb, type: 2}
+    Weight: 1
+  - Value: {fileID: 22100000, guid: 8b91514706a53604788b0b509b62bf58, type: 2}
     Weight: 1
   _defaultVisuals: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
