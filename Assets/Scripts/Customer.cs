@@ -8,11 +8,16 @@ public class Customer : MonoBehaviour
     private Creature want;
     public Creature Want { get { return want; } set { want = value; } }
     public float patience = 15f;
-    public float Patience { get { return patience; } set { patience = value; if (patience <= 0) { Leave(false); } } }
+
+    private float patienceTimer = 0;
+    public float PatienceTimer { get { return patienceTimer; } set { patienceTimer = value; UpdateHp(); if (patienceTimer >= 1) { Leave(false); } } }
 
     public SpriteRenderer myRend;
     public SpriteRenderer wantRend;
     public SpriteRenderer wantRend2;
+
+    public Transform hpPivot;
+    public SpriteRenderer hpBar;
 
     public void OnInstantiate()
     {
@@ -33,7 +38,7 @@ public class Customer : MonoBehaviour
     }
     void Update()
     {
-        //  Patience -= Time.deltaTime;
+        PatienceTimer += Time.deltaTime / patience;
     }
 
     public void CheckWant()
@@ -46,7 +51,8 @@ public class Customer : MonoBehaviour
 
     public void Leave(bool happy)
     {
-        CustomerManager.instance.NextCustomer();
+        CustomerManager.instance.NextCustomer(this);
+        Destroy(gameObject);
     }
 
     public void MoveStep(int nr, float angle)
@@ -66,6 +72,15 @@ public class Customer : MonoBehaviour
         wantRend2.material = wantRend.material;
         wantRend2.enabled = true;
 
+        hpBar.enabled = true;
+        hpBar.color = CustomerManager.instance.GetHpColor(0);
+
         this.enabled = true;
+    }
+
+    public void UpdateHp()
+    {
+        hpBar.color = CustomerManager.instance.GetHpColor(PatienceTimer);
+        hpPivot.localScale = new Vector3(1, 1 - PatienceTimer, 1);
     }
 }

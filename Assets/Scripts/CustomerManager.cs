@@ -24,6 +24,17 @@ public class CustomerManager : MonoBehaviour
     public float falsePetMultiply = 1f;
     public float falsePetSubtract = 1f;
     public float customerAngle = 5f;
+
+    public AnimationCurve hpR;
+    public AnimationCurve hpG;
+    public AnimationCurve hpB;
+    public AnimationCurve hpW;
+
+    public Color32 GetHpColor(float p)
+    {
+        return new Color32((byte)hpR.Evaluate(p), (byte)hpG.Evaluate(p), (byte)hpB.Evaluate(p), 255);
+    }
+
     void Start()
     {
 
@@ -37,7 +48,7 @@ public class CustomerManager : MonoBehaviour
             NextCustomer();
 
             timer = 99999999;
-         //   this.enabled = false;
+            //   this.enabled = false;
         }
     }
 
@@ -51,8 +62,8 @@ public class CustomerManager : MonoBehaviour
         else
         {
             creature.Drop();
-            Customers[0].Patience *= falsePetMultiply;
-            Customers[0].Patience -= falsePetSubtract;
+            Customers[0].PatienceTimer *= falsePetMultiply;
+            Customers[0].PatienceTimer += falsePetSubtract;
         }
     }
     public void NextCustomer(Customer c)
