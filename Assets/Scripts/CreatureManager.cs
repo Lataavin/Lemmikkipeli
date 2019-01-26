@@ -5,10 +5,6 @@ using UnityEngine;
 public class CreatureManager : MonoBehaviour
 {
     public static CreatureManager instance;
-
-    private List<Creature> creatures = new List<Creature>();
-    public List<Creature> Creatures { get { return creatures; } set { creatures = value; } }
-
     void Awake()
     {
         if (instance == null)
@@ -22,13 +18,11 @@ public class CreatureManager : MonoBehaviour
         //   DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private List<Creature> creatures = new List<Creature>();
+    public List<Creature> Creatures { get { return creatures; } set { creatures = value; } }
+
+    public Creature GetRandomCreature()
     {
-
-    }
-
-    void Update()
-    {
-
+        return Creatures[Random.Range(0, Creatures.Count)];
     }
 }

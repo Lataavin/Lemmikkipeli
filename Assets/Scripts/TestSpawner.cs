@@ -7,6 +7,7 @@ public enum spawnable
     none = 0,
     creature = 1,
     prop = 2,
+    customer = 2,
 }
 
 [System.Serializable]
@@ -56,6 +57,18 @@ public class TestSpawner : MonoBehaviour
         }
     }
 
+    public void SpawnType(spawnable type)
+    {
+        for(int i = 0; i < spawnAll.Count;i++)
+        {
+            if(spawnAll[i].type == type)
+            {
+                Spawn(spawnAll[i].prefab,type);
+                return;
+            }
+        }
+    }
+
     private void Spawn(GameObject prefab, spawnable type)
     {
         GameObject newCreature = Instantiate(prefab, Vector3.zero, Quaternion.identity);
@@ -63,6 +76,9 @@ public class TestSpawner : MonoBehaviour
         {
             case spawnable.creature:
                 newCreature.GetComponent<Creature>().OnInstantiate();
+                break;
+            case spawnable.customer:
+                newCreature.GetComponent<Customer>().OnInstantiate();
                 break;
         }
     }

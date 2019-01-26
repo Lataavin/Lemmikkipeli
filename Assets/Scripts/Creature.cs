@@ -28,4 +28,13 @@ public class Creature : MonoBehaviour
     {
 
     }
+
+    public void Drop()
+    {
+
+    }
+    public void Leave()
+    {
+
+    }
 }
