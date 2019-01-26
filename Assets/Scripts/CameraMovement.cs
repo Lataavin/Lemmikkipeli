@@ -10,7 +10,7 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
-        transform.position = new Vector3(WorldManager.instance.worldSize / 2, (GetComponent<Camera>().fieldOfView*0.8f)/4, 8);
+        transform.position = new Vector3(WorldManager.instance.worldSize / 2, (GetComponent<Camera>().orthographicSize*0.95f), 8);
     }
 
 

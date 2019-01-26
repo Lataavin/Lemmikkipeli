@@ -177,8 +177,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -422,6 +422,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  customerToCreatureDistance: 1
 --- !u!114 &1225388952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +835,21 @@ PrefabInstance:
         type: 3}
       propertyPath: TurningMultiplier
       value: 0.0333
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
+        type: 3}
+      propertyPath: rayMask.m_Bits
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
+        type: 3}
+      propertyPath: extraVelocityForce
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
+        type: 3}
+      propertyPath: extraVelocityReduction
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fcd5c134fa4041d8a7923f0a47e5479, type: 3}

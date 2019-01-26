@@ -20,7 +20,7 @@ public class CreatureBehaviour : MonoBehaviour
         if (moveDir == 0) { moveDir = -1; }
         _renderer.flipX = moveDir >= 0;
         rotation = Random.Range(0, WorldManager.instance.worldSize);
-        transform.localPosition = new Vector3(rotation, transform.localEulerAngles.y, transform.localEulerAngles.z);
+       // transform.localPosition = new Vector3(rotation, transform.localEulerAngles.y, transform.localEulerAngles.z);
     }
 
 

@@ -32,6 +32,8 @@ public class CustomerManager : MonoBehaviour
     public AnimationCurve hpB;
     public AnimationCurve hpW;
 
+    public float customerToCreatureDistance = 1f;
+
     public Color32 GetHpColor(float p)
     {
         return new Color32((byte)hpR.Evaluate(p), (byte)hpG.Evaluate(p), (byte)hpB.Evaluate(p), 255);
@@ -54,19 +56,20 @@ public class CustomerManager : MonoBehaviour
         }
     }
 
-    public void TryMatch(Creature creature)
+    public void TryMatch(TouchD t)
     {
-        if (creature.Rend.sprite.name == Customers[0].Want.Rend.sprite.name && creature.Rend.material.name == Customers[0].Want.Rend.material.name)
+        if (t.creature.Rend.sprite.name == Customers[0].Want.Rend.sprite.name && t.creature.Rend.material.name == Customers[0].Want.Rend.material.name)
         {
             Customers[0].Leave(true);
-            creature.Leave();
+            t.creature.Leave();
         }
         else
         {
-            creature.Drop();
+            t.creature.Drop(t);
             Customers[0].PatienceTimer *= falsePetMultiply;
             Customers[0].PatienceTimer += falsePetSubtract;
         }
+        InputController.instance.AbortTouch(t);
     }
     public void NextCustomer(Customer c)
     {
@@ -84,6 +87,14 @@ public class CustomerManager : MonoBehaviour
         for (int i = 0; i < Customers.Count; i++)
         {
             Customers[i].MoveStep(i, (WorldManager.instance.worldSize / 2) + (i * customerAngle));
+        }
+    }
+
+    public void CheckDistance(TouchD t, Transform trans)
+    {
+        if(Vector2.Distance(trans.position,Customers[0].distform.position) <= customerToCreatureDistance)
+        {
+            TryMatch(t);
         }
     }
 }

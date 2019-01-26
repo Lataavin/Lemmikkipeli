@@ -19,6 +19,8 @@ public class Customer : MonoBehaviour
     public Transform hpPivot;
     public SpriteRenderer hpBar;
 
+    public Transform distform;
+
     public void OnInstantiate()
     {
         CustomerManager.instance.Customers.Add(this);
