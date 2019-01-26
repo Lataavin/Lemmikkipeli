@@ -28,6 +28,7 @@ public class Definition<T> where T : UnityEngine.Object
                 current += list[i].Weight;
             }
         }
+        Debug.Log("null");
         return null;
     }
 }

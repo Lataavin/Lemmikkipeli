@@ -10,6 +10,9 @@ public class Customer : MonoBehaviour
     public float patience = 15f;
     public float Patience { get { return patience; } set { patience = value; if (patience <= 0) { Leave(false); } } }
 
+    public SpriteRenderer wantRend;
+    public SpriteRenderer wantRend2;
+
     public void OnInstantiate()
     {
         CustomerManager.instance.Customers.Add(this);
@@ -29,7 +32,7 @@ public class Customer : MonoBehaviour
     }
     void Update()
     {
-        Patience -= Time.deltaTime;
+      //  Patience -= Time.deltaTime;
     }
 
     public void CheckWant()
@@ -45,8 +48,22 @@ public class Customer : MonoBehaviour
         CustomerManager.instance.NextCustomer();
     }
 
-    public void MoveStep()
+    public void MoveStep(float angle)
     {
+        transform.localEulerAngles = new Vector3(0, angle, 0);
+    }
 
+    public void SetFirst()
+    {
+        CheckWant();
+        wantRend.sprite = Want.Rend.sprite;
+        wantRend.material = Want.Rend.material;
+        wantRend.enabled = true;
+
+        wantRend2.sprite = wantRend.sprite;
+        wantRend2.material = wantRend.material;
+        wantRend2.enabled = true;
+
+        this.enabled = true;
     }
 }

@@ -23,6 +23,7 @@ public class CustomerManager : MonoBehaviour
 
     public float falsePetMultiply = 1f;
     public float falsePetSubtract = 1f;
+    public float customerAngle = 5f;
     void Start()
     {
 
@@ -47,10 +48,6 @@ public class CustomerManager : MonoBehaviour
     {
         Customers.Remove(c);
         TestSpawner.instance.SpawnType(spawnable.customer);
-        for (int i = 0; i < Customers.Count; i++)
-        {
-            Customers[i].MoveStep();
-        }
         NextCustomer();
     }
 
@@ -58,8 +55,11 @@ public class CustomerManager : MonoBehaviour
     {
         if (Customers.Count > 0)
         {
-            Customers[0].CheckWant();
-            Customers[0].enabled = true;
+            Customers[0].SetFirst();
+        }
+        for (int i = 0; i < Customers.Count; i++)
+        {
+            Customers[i].MoveStep(i * customerAngle);
         }
     }
 }
