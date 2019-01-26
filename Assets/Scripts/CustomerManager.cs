@@ -43,15 +43,19 @@ public class CustomerManager : MonoBehaviour
             Customers[0].Patience -= falsePetSubtract;
         }
     }
-
-    public void NextCustomer()
+    public void NextCustomer(Customer c)
     {
-        Customers.RemoveAt(0);
-        Customers[0].CheckWant();
-        Customers[0].enabled = true;
-        for(int i = 0; i < Customers.Count;i++)
+        Customers.Remove(c);
+        for (int i = 0; i < Customers.Count; i++)
         {
             Customers[i].MoveStep();
         }
+        NextCustomer();
+    }
+
+    public void NextCustomer()
+    {
+        Customers[0].CheckWant();
+        Customers[0].enabled = true;
     }
 }
