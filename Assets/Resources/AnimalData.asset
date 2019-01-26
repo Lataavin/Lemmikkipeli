@@ -15,7 +15,9 @@ MonoBehaviour:
   _patterns:
   - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
     Weight: 1
-  _defaultPattern: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+  - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+    Weight: 1
+  _defaultPattern: {fileID: 2100000, guid: 31f3f2e4d5f09a540aec7171f6617b7b, type: 2}
   _visuals:
   - Value: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
     Weight: 1
