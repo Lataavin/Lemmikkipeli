@@ -35,7 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4095513155955682}
-  - component: {fileID: 114653189719613558}
+  - component: {fileID: 114653816877267756}
   m_Layer: 0
   m_Name: Kuuse
   m_TagString: Untagged
@@ -70,7 +70,7 @@ Transform:
   m_Father: {fileID: 4095513155955682}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114653189719613558
+--- !u!114 &114653816877267756
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,11 +78,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678791730655586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ab2c8c243494f4297d3d223eddbbc3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c82e0dddc7ff654da65c505a3e732f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1000
-  isProp: 1
 --- !u!212 &212437708778074612
 SpriteRenderer:
   m_ObjectHideFlags: 1

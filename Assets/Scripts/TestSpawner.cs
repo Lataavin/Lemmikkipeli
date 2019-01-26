@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum spawnable
+{
+    none = 0,
+    creature = 1,
+    prop = 2,
+}
+
 [System.Serializable]
 public class SpawnThing
 {
     public GameObject prefab;
     public int amount;
+    public spawnable type;
 }
 [System.Serializable]
 public class SpawnRandom
 {
     public List<GameObject> prefabs;
     public int amount;
+    public spawnable type;
 }
 
 public class TestSpawner : MonoBehaviour
@@ -23,11 +32,16 @@ public class TestSpawner : MonoBehaviour
 
     void Start()
     {
+        MainSpawn();
+    }
+
+    public void MainSpawn()
+    {
         for (int i = 0; i < spawnAll.Count; i++)
         {
             for (int j = 0; j < spawnAll[i].amount; j++)
             {
-                GameObject newCreature = Instantiate(spawnAll[i].prefab, Vector3.zero, Quaternion.identity);
+                Spawn(spawnAll[i].prefab, spawnAll[i].type);
             }
         }
         for (int i = 0; i < spawnRandom.Count; i++)
@@ -36,9 +50,20 @@ public class TestSpawner : MonoBehaviour
             {
                 for (int j = 0; j < spawnAll[i].amount; j++)
                 {
-                    GameObject newCreature = Instantiate(spawnRandom[i].prefabs[Random.Range(0, spawnRandom[i].prefabs.Count)], Vector3.zero, Quaternion.identity);
+                    Spawn(spawnRandom[i].prefabs[Random.Range(0, spawnRandom[i].prefabs.Count)], spawnRandom[i].type);
                 }
             }
+        }
+    }
+
+    private void Spawn(GameObject prefab, spawnable type)
+    {
+        GameObject newCreature = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+        switch(type)
+        {
+            case spawnable.creature:
+                newCreature.GetComponent<Creature>().OnInstantiate();
+                break;
         }
     }
 }

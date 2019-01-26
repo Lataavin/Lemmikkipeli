@@ -8,7 +8,6 @@ public class CreatureBehaviour : MonoBehaviour
     private float mSpeed = 0;
     public float MSpeed { get { return mSpeed; } set { mSpeed = 360 / value; } }
     private float rotation = 0;
-    public bool isProp = false;
 
     void Start()
     {
@@ -19,7 +18,6 @@ public class CreatureBehaviour : MonoBehaviour
         if (moveDir == 0) { moveDir = -1; }
         rotation = Random.Range(0, 360);
         transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, rotation, transform.localEulerAngles.z);
-        if (isProp) { Destroy(GetComponent<CreatureBehaviour>()); }
     }
 
 

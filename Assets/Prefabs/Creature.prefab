@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4635279696300348}
+  - component: {fileID: 114838403935083772}
   - component: {fileID: 114795240600204572}
   m_Layer: 0
   m_Name: Creature
@@ -83,6 +84,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 100
   isProp: 0
+--- !u!114 &114838403935083772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1914617521490992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d4bd1f2a4420a40868eccd8ef2886c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212393949849224618
 SpriteRenderer:
   m_ObjectHideFlags: 1
