@@ -19,13 +19,10 @@ public class Definition<T> where T : UnityEngine.Object
         var random = UnityEngine.Random.Range(0, total);
         for (var i = 0; i < list.Count; ++i)
         {
-            if (current < random)
+            current += list[i].Weight;
+            if (random < current)
             {
                 return list[i].Value;
-            }
-            else
-            {
-                current += list[i].Weight;
             }
         }
         Debug.Log("null");

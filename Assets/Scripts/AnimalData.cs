@@ -21,7 +21,7 @@ public class AnimalData : ScriptableObject
             animator.runtimeAnimatorController = _defaultVisuals;
         }
         renderer.material = PatternDefinition.GetDefinition(_patterns);
-        if (renderer.material = null)
+        if (renderer.material == null)
         {
             renderer.material = _defaultPattern;
         }
