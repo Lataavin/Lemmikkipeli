@@ -55,7 +55,11 @@ public class Customer : MonoBehaviour
     public void Leave(bool happy)
     {
         CustomerManager.instance.NextCustomer(this);
-        Destroy(gameObject);
+        if (happy) { WorldManager.instance.ReputationScore += 1; }
+        else { WorldManager.instance.ReputationScore -= 4; }
+
+        GetComponentInChildren<DieMe>().Launch();
+        this.enabled = false;
     }
 
     public void MoveStep(int nr, float angle)

@@ -178,7 +178,7 @@ public class InputController : MonoBehaviour
         {
             extraVelocity -= Time.deltaTime * extraVelocityReduction;
             if (extraVelocity <= 0) { extraVelocity = 0; }
-            velocity += (extraVelocity * extraVelocityForce * extraVelocityDir);
+            velocity += (extraVelocity * extraVelocityForce * extraVelocityDir * Time.deltaTime);
         }
         float temp = _camera.transform.localPosition.x + velocity;
         temp = Mathf.Clamp(temp, 0, WorldManager.instance.worldSize);

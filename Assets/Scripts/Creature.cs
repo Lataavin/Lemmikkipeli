@@ -41,20 +41,18 @@ public class Creature : MonoBehaviour
 
     }
 
-    void Update()
-    {
-
-    }
-
 
     public void Leave()
     {
-
+        GetComponentInChildren<DieMe>().Launch();
+        GetComponent<CreatureBehaviour>().enabled = false;
+        this.enabled = false;
     }
 
     public void Drop(TouchD t)
     {
         GetComponent<CreatureBehaviour>().enabled = true;
+        GetComponent<CreatureBehaviour>().AddHiddenForce(t);
     }
 
     public void Grab(TouchD t)

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WorldManager : MonoBehaviour
 {
@@ -20,4 +21,14 @@ public class WorldManager : MonoBehaviour
 
 
     public float worldSize;
+
+    public UnityEvent OnLose;
+
+    private int reputationScore = 10;
+    public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } } }
+
+    public void RipCamera()
+    {
+        Destroy(Camera.main);
+    }
 }
