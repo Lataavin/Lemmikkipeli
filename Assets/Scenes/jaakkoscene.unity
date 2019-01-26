@@ -177,7 +177,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 90, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -239,10 +239,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAll:
   - prefab: {fileID: 1035138613, guid: 251463f6e1811bd4aa8bed5ddf5cf43a, type: 3}
-    amount: 10
+    amount: 60
     type: 1
-  - prefab: {fileID: 1678791730655586, guid: d6e3599ca9969264884a86b01e4caae9, type: 3}
+  - prefab: {fileID: 1636500181289508598, guid: aca6ddc97dce6b342bdfd7ffb339fe1f,
+      type: 3}
     amount: 10
+    type: 2
+  - prefab: {fileID: 1678791730655586, guid: d6e3599ca9969264884a86b01e4caae9, type: 3}
+    amount: 5
     type: 3
   spawnRandom: []
 --- !u!4 &1118410496
@@ -270,6 +274,7 @@ GameObject:
   - component: {fileID: 1225388950}
   - component: {fileID: 1225388949}
   - component: {fileID: 1225388951}
+  - component: {fileID: 1225388952}
   m_Layer: 0
   m_Name: CreatureManager
   m_TagString: Untagged
@@ -318,7 +323,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   falsePetMultiply: 1
   falsePetSubtract: 1
-  customerAngle: 15
+  customerAngle: 5
+--- !u!114 &1225388952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225388948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b215b1e62d13c448bd6f9d5564556d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldSize: 90
 --- !u!1001 &2109904504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,6 +403,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
+        type: 3}
+      propertyPath: TurningMultiplier
+      value: 0.0333
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fcd5c134fa4041d8a7923f0a47e5479, type: 3}

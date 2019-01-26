@@ -48,7 +48,7 @@ public class TestSpawner : MonoBehaviour
     void Start()
     {
         MainSpawn();
-        CustomerManager.instance.NextCustomer();
+        //CustomerManager.instance.NextCustomer();
     }
 
     public void MainSpawn()

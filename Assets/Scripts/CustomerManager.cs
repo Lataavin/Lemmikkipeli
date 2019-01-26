@@ -28,7 +28,18 @@ public class CustomerManager : MonoBehaviour
     {
 
     }
+    float timer = 0.1f;
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            NextCustomer();
 
+            timer = 99999999;
+         //   this.enabled = false;
+        }
+    }
 
     public void TryMatch(Creature creature)
     {
@@ -59,7 +70,7 @@ public class CustomerManager : MonoBehaviour
         }
         for (int i = 0; i < Customers.Count; i++)
         {
-            Customers[i].MoveStep(i * customerAngle);
+            Customers[i].MoveStep(i, (WorldManager.instance.worldSize / 2) + (i * customerAngle));
         }
     }
 }

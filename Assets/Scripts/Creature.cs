@@ -9,6 +9,7 @@ public class Creature : MonoBehaviour
     private Animator anim;
     public Animator Anim { get { return anim; } }
     private bool isInstantiated = false;
+    public Transform pivoty;
 
     public void OnInstantiate()
     {
@@ -26,10 +27,16 @@ public class Creature : MonoBehaviour
 
     public void Setup()
     {
+        
         rend = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponent<Animator>();
         CreatureManager.instance.AnimData.SetVisuals(anim, rend);
         CreatureManager.instance.Creatures.Add(this);
+
+        int dist = Random.Range(-150, 150);
+        rend.sortingOrder = 500 + dist;
+        pivoty.localPosition = new Vector3(pivoty.localPosition.x, pivoty.localPosition.y, pivoty.localPosition.z - ((float)dist / 100));
+
     }
 
     void Update()

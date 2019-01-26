@@ -16,8 +16,8 @@ public class CreatureBehaviour : MonoBehaviour
 
         moveDir = Random.Range(0, 2);
         if (moveDir == 0) { moveDir = -1; }
-        rotation = Random.Range(0, 360);
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, rotation, transform.localEulerAngles.z);
+        rotation = Random.Range(0, WorldManager.instance.worldSize);
+        transform.localPosition = new Vector3(rotation, transform.localEulerAngles.y, transform.localEulerAngles.z);
     }
 
 
@@ -33,6 +33,7 @@ public class CreatureBehaviour : MonoBehaviour
     public void Move(float amount)
     {
         rotation += amount;
-        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, rotation, transform.localEulerAngles.z);
+        if (rotation <= 0 || rotation >= WorldManager.instance.worldSize) { moveDir *= -1; }
+        transform.localPosition = new Vector3(rotation, transform.localPosition.y, transform.localPosition.z);
     }
 }

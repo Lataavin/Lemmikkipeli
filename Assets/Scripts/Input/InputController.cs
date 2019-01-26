@@ -50,6 +50,6 @@ public class InputController : MonoBehaviour
 
     public void TurnCamera(float velocity)
     {
-        _camera.transform.Rotate(Vector3.up, velocity);
+        _camera.transform.localPosition = new Vector3(_camera.transform.localPosition.x + velocity, _camera.transform.localPosition.y, _camera.transform.localPosition.z);
     }
 }
