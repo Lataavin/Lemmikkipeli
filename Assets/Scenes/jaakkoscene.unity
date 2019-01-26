@@ -238,12 +238,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAll:
-  - prefab: {fileID: 1914617521490992, guid: 823752a449fb961419b9ab009995f922, type: 3}
+  - prefab: {fileID: 1035138613, guid: 251463f6e1811bd4aa8bed5ddf5cf43a, type: 3}
     amount: 10
     type: 1
   - prefab: {fileID: 1678791730655586, guid: d6e3599ca9969264884a86b01e4caae9, type: 3}
     amount: 10
-    type: 2
+    type: 3
   spawnRandom: []
 --- !u!4 &1118410496
 Transform:
@@ -269,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225388950}
   - component: {fileID: 1225388949}
+  - component: {fileID: 1225388951}
   m_Layer: 0
   m_Name: CreatureManager
   m_TagString: Untagged
@@ -288,6 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3242b42ef8c078b498648ab8aef586b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animData: {fileID: 11400000, guid: 55e1ef53da11eb94bbd868aa399b7285, type: 2}
 --- !u!4 &1225388950
 Transform:
   m_ObjectHideFlags: 0
@@ -302,6 +304,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225388951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225388948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746ee53f484f85b46aac9c4327240608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  falsePetMultiply: 1
+  falsePetSubtract: 1
 --- !u!1001 &2109904504
 PrefabInstance:
   m_ObjectHideFlags: 0

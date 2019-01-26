@@ -46,6 +46,7 @@ public class CustomerManager : MonoBehaviour
     public void NextCustomer(Customer c)
     {
         Customers.Remove(c);
+        TestSpawner.instance.SpawnType(spawnable.customer);
         for (int i = 0; i < Customers.Count; i++)
         {
             Customers[i].MoveStep();
@@ -55,7 +56,10 @@ public class CustomerManager : MonoBehaviour
 
     public void NextCustomer()
     {
-        Customers[0].CheckWant();
-        Customers[0].enabled = true;
+        if (Customers.Count > 0)
+        {
+            Customers[0].CheckWant();
+            Customers[0].enabled = true;
+        }
     }
 }

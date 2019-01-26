@@ -21,6 +21,9 @@ public class CreatureManager : MonoBehaviour
     private List<Creature> creatures = new List<Creature>();
     public List<Creature> Creatures { get { return creatures; } set { creatures = value; } }
 
+    public AnimalData animData;
+    public AnimalData AnimData { get { return animData; } set { animData = value; } }
+
     public Creature GetRandomCreature()
     {
         return Creatures[Random.Range(0, Creatures.Count)];

@@ -6,8 +6,8 @@ public enum spawnable
 {
     none = 0,
     creature = 1,
-    prop = 2,
     customer = 2,
+    prop = 3,
 }
 
 [System.Serializable]
@@ -27,9 +27,23 @@ public class SpawnRandom
 
 public class TestSpawner : MonoBehaviour
 {
+    public static TestSpawner instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        //   DontDestroyOnLoad(gameObject);
+    }
+
+
     public List<SpawnThing> spawnAll = new List<SpawnThing>();
     public List<SpawnRandom> spawnRandom = new List<SpawnRandom>();
-
 
     void Start()
     {

@@ -6,22 +6,30 @@ public class Creature : MonoBehaviour
 {
     private SpriteRenderer rend;
     public SpriteRenderer Rend { get { return rend; } }
+    private Animator anim;
+    public Animator Anim { get { return anim; } }
     private bool isInstantiated = false;
 
     public void OnInstantiate()
     {
-        rend = GetComponentInChildren<SpriteRenderer>();
-        CreatureManager.instance.Creatures.Add(this);
         isInstantiated = true;
+        Setup();
     }
 
     void Start()
     {
         if (!isInstantiated)
         {
-            rend = GetComponentInChildren<SpriteRenderer>();
-            CreatureManager.instance.Creatures.Add(this);
+            Setup();
         }
+    }
+
+    public void Setup()
+    {
+        rend = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        CreatureManager.instance.AnimData.SetVisuals(anim, rend);
+        CreatureManager.instance.Creatures.Add(this);
     }
 
     void Update()
