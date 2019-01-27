@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ZebraStripes_Material
+  m_Name: leopard
   m_Shader: {fileID: 4800000, guid: 694f934da433b9f44acc2bdfc8a46d69, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 96e3258547fe9b94ea6ed5da08235332, type: 3}
+        m_Texture: {fileID: 2800000, guid: 447277af4dae39648a790f9ad71f1a60, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Pattern:
-        m_Texture: {fileID: 2800000, guid: 76de8d9a049dc8e4883fdaa5eaaa2079, type: 3}
+        m_Texture: {fileID: 2800000, guid: 447277af4dae39648a790f9ad71f1a60, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: d8ca30f60e4a7944285a68f4bea5c313, type: 3}
+        m_Texture: {fileID: 2800000, guid: 193519c178b43fa459750fb750c2b85d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -79,7 +79,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PatternOpacity: 0.5
+    - _PatternOpacity: 1.27
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -89,7 +89,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Outline: {r: 1, g: 1, b: 1, a: 0}
-    - _PatternColor: {r: 0.6132076, g: 0.3326362, b: 0.3326362, a: 0}
     - _PatternCoords: {r: 1, g: 1, b: 0, a: 0}
-    - _Tint: {r: 0.4245283, g: 0.078097194, b: 0.09513469, a: 0}

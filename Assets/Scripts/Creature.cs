@@ -11,6 +11,9 @@ public class Creature : MonoBehaviour
     private bool isInstantiated = false;
     public Transform pivoty;
 
+    private int _anmWalk = Animator.StringToHash("Walk");
+    private int _anmDrag = Animator.StringToHash("Drag");
+
     public void OnInstantiate()
     {
         isInstantiated = true;

@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: AnimalData
   m_EditorClassIdentifier: 
   _patterns:
-  - Value: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+  - Value: {fileID: 2100000, guid: 76902a9f4582975428ff2df3861eecc0, type: 2}
     Weight: 1
-  - Value: {fileID: 2100000, guid: 31f3f2e4d5f09a540aec7171f6617b7b, type: 2}
+  - Value: {fileID: 2100000, guid: c34044240655c3d40851dbb5cd523d78, type: 2}
     Weight: 1
-  - Value: {fileID: 2100000, guid: 80834688329caa946959a0096e9b5b03, type: 2}
+  - Value: {fileID: 2100000, guid: 368bce587fffb694a9bb79b359f89071, type: 2}
+    Weight: 3
+  - Value: {fileID: 2100000, guid: eef4424eb04a48d4bb1d2962a56d130b, type: 2}
     Weight: 1
-  _defaultPattern: {fileID: 2100000, guid: 0517d5d25a29e6d45a3c5d159bb57605, type: 2}
+  - Value: {fileID: 2100000, guid: 238b197034268e349976a469bae467ee, type: 2}
+    Weight: 1
+  - Value: {fileID: 2100000, guid: c2d1a11e5c695744c981fb84961a0439, type: 2}
+    Weight: 1
+  _defaultPattern: {fileID: 2100000, guid: 368bce587fffb694a9bb79b359f89071, type: 2}
   _visuals:
   - Value: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
     Weight: 1

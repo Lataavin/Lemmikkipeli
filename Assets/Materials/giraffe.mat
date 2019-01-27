@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pants_Material
+  m_Name: giraffe
   m_Shader: {fileID: 4800000, guid: 694f934da433b9f44acc2bdfc8a46d69, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1f1ac9b1cf092674c8baad077a6df57d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Pattern:
-        m_Texture: {fileID: 2800000, guid: 01239d84e54895c428e6ab5a8ff4482b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1f1ac9b1cf092674c8baad077a6df57d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ramp:
-        m_Texture: {fileID: 2800000, guid: 67637bd3def54f54abc81cf4a25697eb, type: 3}
+        m_Texture: {fileID: 2800000, guid: d466cf50d54a9ca45a345760adb35b06, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _texcoord:
@@ -79,7 +79,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _PatternOpacity: 0.68
+    - _PatternOpacity: 0.47
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -89,4 +89,4 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PatternCoords: {r: 0.86, g: 1, b: 0, a: 0}
+    - _PatternCoords: {r: 1, g: 1, b: 0, a: 0}
