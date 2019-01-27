@@ -27,8 +27,6 @@ MonoBehaviour:
     Weight: 1
   _defaultPattern: {fileID: 2100000, guid: 368bce587fffb694a9bb79b359f89071, type: 2}
   _visuals:
-  - Value: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
-    Weight: 3
   - Value: {fileID: 22100000, guid: 6a00e6bc26fc20d4f88541abf727c6e8, type: 2}
     Weight: 3
   - Value: {fileID: 22100000, guid: 3b1230ba5ee5f364cba424e153c5cda5, type: 2}
