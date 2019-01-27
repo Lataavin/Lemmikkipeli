@@ -35,7 +35,7 @@ public class Creature : MonoBehaviour
         anim = GetComponent<Animator>();
         CreatureManager.instance.AnimData.SetVisuals(anim, rend);
         CreatureManager.instance.Creatures.Add(this);
-
+        anim.SetBool(_anmWalk, true);
         int dist = Random.Range(0, 200);
         rend.sortingOrder = 500 + dist;
         // pivoty.localPosition = new Vector3(pivoty.localPosition.x, pivoty.localPosition.y, pivoty.localPosition.z - ((float)dist / 100));
@@ -54,18 +54,21 @@ public class Creature : MonoBehaviour
 
     public void Drop(TouchD t)
     {
+        anim.SetBool(_anmDrag, false);
         GetComponent<CreatureBehaviour>().enabled = true;
         GetComponent<CreatureBehaviour>().AddHiddenForce(t);
     }
 
     public void Grab(TouchD t)
     {
+        anim.SetBool(_anmDrag, true);
         GetComponent<CreatureBehaviour>().enabled = false;
         Vector2 point = Camera.main.ScreenToWorldPoint(new Vector3(t.curPoint.x, t.curPoint.y, pivoty.position.z));
         transform.position = new Vector3(point.x, point.y, transform.position.z);
     }
     public void Move(TouchD t)
     {
+        anim.SetBool(_anmDrag, true);
         Vector2 point = Camera.main.ScreenToWorldPoint(new Vector3(t.curPoint.x, t.curPoint.y, pivoty.position.z));
         transform.position = new Vector3(point.x, point.y, transform.position.z);
         CustomerManager.instance.CheckDistance(t, pivoty);
