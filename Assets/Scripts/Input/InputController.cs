@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class TouchD
 {
@@ -27,6 +24,8 @@ public class InputController : MonoBehaviour
     private List<TouchD> touches = new List<TouchD>();
 
     public static InputController instance;
+    public GameObject TouchEffectPrfab;
+
     public void Awake()
     {
         if (instance == null)
@@ -46,9 +45,9 @@ public class InputController : MonoBehaviour
         UpdateInput();
     }
 
-    float extraVelocity = 0;
-    float extraVelocityDir = 1;
-    float velocity = 0.0f;
+    private float extraVelocity = 0;
+    private float extraVelocityDir = 1;
+    private float velocity = 0.0f;
     private void UpdateInput()
     {
         velocity = 0f;
@@ -65,6 +64,10 @@ public class InputController : MonoBehaviour
             switch (t.phase)
             {
                 case TouchPhase.Began:
+                    if (TouchEffectPrfab != null)
+                    {
+                        Instantiate(TouchEffectPrfab, Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y, 10)), TouchEffectPrfab.transform.localRotation);
+                    }
                     TouchD newTouch = new TouchD();
                     newTouch.fingerId = t.fingerId;
                     newTouch.startPoint = t.position;
@@ -81,7 +84,6 @@ public class InputController : MonoBehaviour
                     break;
 
                 case TouchPhase.Stationary:
-                    goto case TouchPhase.Moved;
                 case TouchPhase.Moved:
                     for (int i = 0; i < touches.Count; i++)
                     {
@@ -93,6 +95,7 @@ public class InputController : MonoBehaviour
                             if (touches[i].creature == null)
                             {
                                 velocity = (touches[i].prevPoint.x - touches[i].curPoint.x) * TurningMultiplier;
+                                TurnCamera(velocity);
                             }
                             else
                             {
@@ -104,7 +107,6 @@ public class InputController : MonoBehaviour
                     break;
 
                 case TouchPhase.Canceled:
-                    goto case TouchPhase.Ended;
                 case TouchPhase.Ended:
                     for (int i = touches.Count - 1; i >= 0; i--)
                     {
@@ -163,9 +165,10 @@ public class InputController : MonoBehaviour
 
             touches.RemoveAt(0);
         }
+        TurnCamera(velocity);
 #endif
 
-        TurnCamera(velocity);
+
     }
 
     public void CheckSwipeControl()
