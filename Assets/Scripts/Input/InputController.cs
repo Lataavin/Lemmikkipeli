@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class TouchD
 {
     public int fingerId = -2;
@@ -95,7 +96,7 @@ public class InputController : MonoBehaviour
                             touches[i].duration += Time.deltaTime;
                             if (touches[i].creature == null)
                             {
-                                velocity = ((touches[i].prevPoint.x - touches[i].curPoint.x) / ((float)Screen.width / 2)) * TurningMultiplier;
+                                velocity = ((touches[i].prevPoint.x - touches[i].curPoint.x) / ((float)Screen.width / 3)) * TurningMultiplier;
                                 TurnCamera(velocity);
                             }
                             else
@@ -125,10 +126,9 @@ public class InputController : MonoBehaviour
                     break;
             }
         }
-
-        if (touches.Count == 0 && !isMobile)
+        
+        if (!isMobile && (touches.Count == 0 || touches[0].fingerId == -1))
         {
-            print("not mobile");
             if (Input.GetMouseButtonDown(0))
             {
                 TouchD newTouch = new TouchD();
@@ -152,7 +152,7 @@ public class InputController : MonoBehaviour
                 touches[0].duration += Time.deltaTime;
                 if (touches[0].creature == null)
                 {
-                    velocity = ((touches[0].prevPoint.x - touches[0].curPoint.x) / ((float)Screen.width/2)) * TurningMultiplier;
+                    velocity = ((touches[0].prevPoint.x - touches[0].curPoint.x) / ((float)Screen.width/3)) * TurningMultiplier;
                 }
                 else
                 {
