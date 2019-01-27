@@ -58,18 +58,22 @@ public class CustomerManager : MonoBehaviour
 
     public void TryMatch(TouchD t)
     {
-        if (t.creature.Rend.sprite.name == Customers[0].Want.Rend.sprite.name && t.creature.Rend.material.name == Customers[0].Want.Rend.material.name)
+        try
         {
-            Customers[0].Leave(true);
-            t.creature.Leave();
+            if (t.creature.Anim.name == Customers[0].Want.Anim.name && t.creature.Rend.material.name == Customers[0].Want.Rend.material.name)
+            {
+                Customers[0].Leave(true);
+                t.creature.Leave();
+            }
+            else
+            {
+                t.creature.Drop(t);
+                Customers[0].PatienceTimer *= falsePetMultiply;
+                Customers[0].PatienceTimer += falsePetSubtract;
+            }
+            InputController.instance.AbortTouch(t);
         }
-        else
-        {
-            t.creature.Drop(t);
-            Customers[0].PatienceTimer *= falsePetMultiply;
-            Customers[0].PatienceTimer += falsePetSubtract;
-        }
-        InputController.instance.AbortTouch(t);
+        catch { Debug.Log("ERROR ! customermanager trymatch! " + Customers[0].CheckWantError(true)); }
     }
     public void NextCustomer(Customer c)
     {
@@ -92,7 +96,7 @@ public class CustomerManager : MonoBehaviour
 
     public void CheckDistance(TouchD t, Transform trans)
     {
-        if (Vector2.Distance(trans.position,Customers[0].distform.position) <= customerToCreatureDistance)
+        if (Vector2.Distance(trans.position, Customers[0].distform.position) <= customerToCreatureDistance)
         {
             TryMatch(t);
         }

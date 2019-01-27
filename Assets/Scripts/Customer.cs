@@ -79,6 +79,16 @@ public class Customer : MonoBehaviour
             Want = CreatureManager.instance.GetRandomCreature();
         }
     }
+    public string CheckWantError(bool updateWant)
+    {
+        if (Want == null)
+        {
+            Want = CreatureManager.instance.GetRandomCreature();
+            if(updateWant) { UpdateWant(); }
+            return "No want found";
+        }
+        return "Want found";
+    }
 
     public void Leave(bool happy)
     {
@@ -109,9 +119,8 @@ public class Customer : MonoBehaviour
     public void SetFirst()
     {
         CheckWant();
-        wantRend.sprite = Want.Rend.sprite;
-        wantRend.material = Want.Rend.material;
-        wantRendGameObject.SetActive(true);
+        patience = (patience / 2) + (patience / WorldManager.instance.ReputationScore);
+        UpdateWant();
         hpBar.enabled = true;
         hpBar.color = CustomerManager.instance.GetHpColor(0);
         _angryParticle.SetAngriness(0);
@@ -123,5 +132,12 @@ public class Customer : MonoBehaviour
     {
         hpBar.color = CustomerManager.instance.GetHpColor(PatienceTimer);
         hpPivot.localScale = new Vector3(1, 1 - PatienceTimer, 1);
+    }
+
+    public void UpdateWant()
+    {
+        wantRend.sprite = Want.Rend.sprite;
+        wantRend.material = Want.Rend.material;
+        wantRendGameObject.SetActive(true);
     }
 }
