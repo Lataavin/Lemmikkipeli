@@ -23,6 +23,10 @@ public class Customer : MonoBehaviour
 
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private AngryParticle _angryParticle;
+    [SerializeField]
+    private AnimationCurve _angryCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     private int _anmAngryness = Animator.StringToHash("Angryness");
 
@@ -34,6 +38,7 @@ public class Customer : MonoBehaviour
         isInstantiated = true;
         wantRendGameObject.SetActive(false);
         CustomerManager.instance.CustomerData.SetCustomerVisuals(myRend);
+        _angryParticle.gameObject.SetActive(false);
     }
 
     void Start()
@@ -50,7 +55,9 @@ public class Customer : MonoBehaviour
         if (firstCustomer)
         {
             PatienceTimer += Time.deltaTime / patience;
-            _animator.SetFloat(_anmAngryness, Mathf.Clamp01(PatienceTimer));
+            var visualPatience = _angryCurve.Evaluate(PatienceTimer);
+            _animator.SetFloat(_anmAngryness, visualPatience);
+            _angryParticle.SetAngriness(visualPatience);
 
         }
         if (aPhase < 1)
@@ -107,7 +114,8 @@ public class Customer : MonoBehaviour
         wantRendGameObject.SetActive(true);
         hpBar.enabled = true;
         hpBar.color = CustomerManager.instance.GetHpColor(0);
-
+        _angryParticle.SetAngriness(0);
+        _angryParticle.gameObject.SetActive(true);
         firstCustomer = true;
     }
 
