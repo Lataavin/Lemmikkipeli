@@ -20,8 +20,6 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip _failSound;
 
-
-    public bool FeverSoundsOn;
     public float FeverAmount = 0.0f;
 
     public void Awake()
@@ -60,17 +58,7 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateFever()
     {
-        var pitchTarget = 0.0f;
-
-        if (FeverSoundsOn)
-        {
-            pitchTarget = 1.0f + (Mathf.Sin(Time.timeSinceLevelLoad * 2.0f) * FeverAmount);
-        }
-        else
-        {
-            pitchTarget = 1;
-        }
-
+        var pitchTarget = 1.0f + (Mathf.Sin(Time.timeSinceLevelLoad * 2.0f) * FeverAmount);
         _audioSource.pitch = Mathf.Lerp(_audioSource.pitch, pitchTarget, Time.deltaTime);
     }
 

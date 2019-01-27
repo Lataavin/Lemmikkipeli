@@ -59,7 +59,7 @@ public class WorldManager : MonoBehaviour
             return;
         }
         _fever.SetValue(Mathf.Clamp01(ExtraScore / 5f));
-        AudioManager.instance.FeverAmount = Mathf.Clamp01(ExtraScore / 5.0f) * 0.2f;
+        AudioManager.instance.FeverAmount = Mathf.Clamp01(Mathf.Clamp(ExtraScore - 10, 0, 100) / 5.0f) * 0.2f;
     }
 
     public void RipCamera()
