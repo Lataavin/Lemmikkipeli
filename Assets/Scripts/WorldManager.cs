@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
@@ -14,6 +15,8 @@ public class WorldManager : MonoBehaviour
     [SerializeField]
     private FeverMode _fever;
 
+    public RectTransform stars;
+    private float starsMax;
     void Awake()
     {
         if (instance == null)
@@ -30,13 +33,14 @@ public class WorldManager : MonoBehaviour
     void Start()
     {
         PlayerPrefs.SetInt("Score", 0);
+        starsMax = stars.sizeDelta.y;
     }
     public float worldSize;
 
     public UnityEvent OnLose;
 
     private int reputationScore = 10;
-    public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } else if (reputationScore > 10) { reputationScore = 10; } } }
+    public int ReputationScore { get { return reputationScore; } set { reputationScore = value; UpdateStars(); if (reputationScore <= 0) { OnLose.Invoke(); } else if (reputationScore > 10) { reputationScore = 10; } } }
     public int ExtraScore = 0;
     public int GameScore = 0;
 
@@ -66,5 +70,13 @@ public class WorldManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", GameScore);
         SceneManager.LoadScene("EndScene");
+    }
+
+
+    public void UpdateStars()
+    {
+        float temp = (starsMax / 10) * ReputationScore;
+        stars.sizeDelta = new Vector2(stars.sizeDelta.x, temp);
+        stars.anchoredPosition = new Vector3(stars.anchoredPosition.x, -temp / 2);
     }
 }

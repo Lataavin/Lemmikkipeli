@@ -117,7 +117,7 @@ public class Customer : MonoBehaviour
             {
                 Instantiate(AngryEffectPrfab, distform.position, AngryEffectPrfab.transform.localRotation);
             }
-            WorldManager.instance.ReputationScore -= 1;
+            WorldManager.instance.ReputationScore -= 2;
             WorldManager.instance.ExtraScore = 0;
             WorldManager.instance.SetFever();
         }
