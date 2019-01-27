@@ -26,7 +26,8 @@ public class WorldManager : MonoBehaviour
 
     private int reputationScore = 10;
     public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } } }
-
+    public int ExtraScore = 0;
+    public int GameScore = 0;
     public void RipCamera()
     {
         Destroy(Camera.main);

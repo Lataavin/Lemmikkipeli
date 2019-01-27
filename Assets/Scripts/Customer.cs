@@ -61,8 +61,14 @@ public class Customer : MonoBehaviour
     public void Leave(bool happy)
     {
         CustomerManager.instance.NextCustomer(this);
-        if (happy) { WorldManager.instance.ReputationScore += 1; }
-        else { WorldManager.instance.ReputationScore -= 4; }
+        if (happy)
+        {
+            WorldManager.instance.ReputationScore += 1;
+            WorldManager.instance.ExtraScore += 1;
+            WorldManager.instance.GameScore += 1 + WorldManager.instance.ExtraScore;
+            Debug.Log("Score:" + WorldManager.instance.GameScore);
+        }
+        else { WorldManager.instance.ReputationScore -= 4; WorldManager.instance.ExtraScore = 0; }
 
         GetComponentInChildren<DieMe>().Launch();
         this.enabled = false;
