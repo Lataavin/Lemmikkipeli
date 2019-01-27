@@ -21,6 +21,11 @@ public class Customer : MonoBehaviour
 
     public Transform distform;
 
+    [SerializeField]
+    private Animator _animator;
+
+    private int _anmAngryness = Animator.StringToHash("Angryness");
+
     public void OnInstantiate()
     {
         CustomerManager.instance.Customers.Add(this);
@@ -42,6 +47,7 @@ public class Customer : MonoBehaviour
     void Update()
     {
         PatienceTimer += Time.deltaTime / patience;
+        _animator.SetFloat(_anmAngryness, Mathf.Clamp01(PatienceTimer));
     }
 
     public void CheckWant()
