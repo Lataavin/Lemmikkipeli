@@ -458,14 +458,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAll:
   - prefab: {fileID: 1035138613, guid: 251463f6e1811bd4aa8bed5ddf5cf43a, type: 3}
-    amount: 60
+    amount: 40
     type: 1
   - prefab: {fileID: 7620809174653364510, guid: ce1c1d5639878614abaaec75e113639b,
       type: 3}
     amount: 10
     type: 2
   - prefab: {fileID: 1678791730655586, guid: d6e3599ca9969264884a86b01e4caae9, type: 3}
-    amount: 5
+    amount: 0
     type: 3
   spawnRandom: []
 --- !u!4 &1118410496
@@ -543,7 +543,7 @@ MonoBehaviour:
   CustomerData: {fileID: 11400000, guid: 0abdbed8b7614394ab731e10e37286cd, type: 2}
   falsePetMultiply: 1
   falsePetSubtract: 1
-  customerAngle: 5
+  customerAngle: 10
   hpR:
     serializedVersion: 2
     m_Curve:
@@ -1068,15 +1068,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4954138893281718943, guid: 131a443ad98021442998d33c3d4521fd,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919511439782486689, guid: 131a443ad98021442998d33c3d4521fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.729
+      objectReference: {fileID: 0}
     - target: {fileID: 6636589089126933562, guid: 131a443ad98021442998d33c3d4521fd,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6636589089126933562, guid: 131a443ad98021442998d33c3d4521fd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 25.769495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562560448367517593, guid: 131a443ad98021442998d33c3d4521fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.729
+      objectReference: {fileID: 0}
+    - target: {fileID: 2304046455280672192, guid: 131a443ad98021442998d33c3d4521fd,
         type: 3}
       propertyPath: m_SortingOrder
       value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2304046455280672192, guid: 131a443ad98021442998d33c3d4521fd,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 5000
+      propertyPath: m_Size.y
+      value: 25.769495
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 131a443ad98021442998d33c3d4521fd, type: 3}

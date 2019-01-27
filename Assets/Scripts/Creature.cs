@@ -33,7 +33,7 @@ public class Creature : MonoBehaviour
         CreatureManager.instance.AnimData.SetVisuals(anim, rend);
         CreatureManager.instance.Creatures.Add(this);
 
-        int dist = Random.Range(-150, 150);
+        int dist = Random.Range(0, 200);
         rend.sortingOrder = 500 + dist;
         // pivoty.localPosition = new Vector3(pivoty.localPosition.x, pivoty.localPosition.y, pivoty.localPosition.z - ((float)dist / 100));
 

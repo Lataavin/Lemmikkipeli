@@ -53,13 +53,13 @@ public class InputController : MonoBehaviour
     {
         velocity = 0f;
 
-        /*#if UNITY_ANDROID || UNITY_IPHONE || UNITY_IOS
+        #if UNITY_ANDROID || UNITY_IPHONE || UNITY_IOS
 
              /*   if (Input.touches.Length > 0)
                 {
                     var touchDelta = Input.touches[0].deltaPosition;
                     velocity = touchDelta.x * -TurningMultiplier;
-                }
+                }*/
                 foreach (Touch t in Input.touches)
                 {
                     switch (t.phase)
@@ -125,7 +125,7 @@ public class InputController : MonoBehaviour
                             break;
                     }
                 }
-        #else*/
+        #else
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -168,7 +168,7 @@ public class InputController : MonoBehaviour
 
             touches.RemoveAt(0);
         }
-        //#endif
+        #endif
         TurnCamera(velocity);
 
 
