@@ -10,6 +10,7 @@ public class LoadScene : MonoBehaviour
 
     public void GoToScene()
     {
+        AudioManager.instance.PlayBlobSound();
         SceneManager.LoadScene(_sceneName);
     }
 

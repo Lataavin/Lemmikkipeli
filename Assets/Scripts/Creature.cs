@@ -57,6 +57,7 @@ public class Creature : MonoBehaviour
         anim.SetBool(_anmDrag, false);
         GetComponent<CreatureBehaviour>().enabled = true;
         GetComponent<CreatureBehaviour>().AddHiddenForce(t);
+        AudioManager.instance.PlayBlobSound();
     }
 
     public void Grab(TouchD t)
@@ -65,6 +66,8 @@ public class Creature : MonoBehaviour
         GetComponent<CreatureBehaviour>().enabled = false;
         Vector2 point = Camera.main.ScreenToWorldPoint(new Vector3(t.curPoint.x, t.curPoint.y, pivoty.position.z));
         transform.position = new Vector3(point.x, point.y, transform.position.z);
+        AudioManager.instance.PlayBlobSound();
+        AudioManager.instance.PlayCreatureSound(anim.runtimeAnimatorController.name);
     }
     public void Move(TouchD t)
     {
