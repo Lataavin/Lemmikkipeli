@@ -65,6 +65,7 @@ public class CustomerManager : MonoBehaviour
             {
                 Customers[0].Leave(true);
                 t.creature.Leave();
+                TestSpawner.instance.SpawnType(spawnable.creature);
             }
             else
             {

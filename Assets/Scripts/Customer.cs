@@ -88,7 +88,7 @@ public class Customer : MonoBehaviour
         if (Want == null)
         {
             Want = CreatureManager.instance.GetRandomCreature();
-            if(updateWant) { UpdateWant(); }
+            if (updateWant) { UpdateWant(); }
             return "No want found";
         }
         return "Want found";
@@ -101,7 +101,7 @@ public class Customer : MonoBehaviour
         {
             if (HeartEffectPrfab != null)
             {
-                Instantiate(HeartEffectPrfab, distform.position, HeartEffectPrfab.transform.localRotation);                    
+                Instantiate(HeartEffectPrfab, distform.position, HeartEffectPrfab.transform.localRotation);
                 AudioManager.instance.PlayAnimalGiveSound(true);
 
             }
@@ -140,8 +140,8 @@ public class Customer : MonoBehaviour
 
     public void SetFirst()
     {
-        CheckWant();
-        patience = (patience / 2) + (patience / WorldManager.instance.ReputationScore);
+        Want = CreatureManager.instance.GetRandomCreature();
+        patience = (patience / 4) + (patience / (1 + (4 * WorldManager.instance.ReputationScore))) + (patience / (1 + (4 * WorldManager.instance.ExtraScore))) + (patience / (1 + (4 * WorldManager.instance.GameScore)));
         UpdateWant();
         hpBar.enabled = true;
         hpBar.color = CustomerManager.instance.GetHpColor(0);

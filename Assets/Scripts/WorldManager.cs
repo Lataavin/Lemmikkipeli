@@ -36,7 +36,7 @@ public class WorldManager : MonoBehaviour
     public UnityEvent OnLose;
 
     private int reputationScore = 10;
-    public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } } }
+    public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } else if (reputationScore > 10) { reputationScore = 10; } } }
     public int ExtraScore = 0;
     public int GameScore = 0;
 
