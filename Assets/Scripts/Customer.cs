@@ -119,6 +119,7 @@ public class Customer : MonoBehaviour
             WorldManager.instance.ExtraScore = 0;
             WorldManager.instance.SetFever();
         }
+        AudioManager.instance.PlayAnimalGiveSound(happy);
         wantRendGameObject.SetActive(false);
         hpPivot.gameObject.SetActive(false);
         GetComponentInChildren<DieMe>().Launch();

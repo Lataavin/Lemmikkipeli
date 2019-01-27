@@ -9,19 +9,21 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [SerializeField]
-    private AudioClip mainMusic;
-    [SerializeField]
-    private AudioClip creditsMusic;
-    
-    [SerializeField]
-    private AudioSource _audioSource;
-    
-    [SerializeField]
-    private AudioClip _blobSound;
+    [SerializeField] private AudioClip mainMusic;
+    [SerializeField] private AudioClip creditsMusic;
+
+    [SerializeField] private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip _blobSound;
+
+    [SerializeField] private AudioClip _successSound;
+
+    [SerializeField] private AudioClip _failSound;
+
 
     public bool FeverSoundsOn;
     public float FeverAmount = 0.0f;
+
     public void Awake()
     {
         if (instance == null)
@@ -30,7 +32,7 @@ public class AudioManager : MonoBehaviour
         }
         else if (instance != this)
             Destroy(gameObject);
-        
+
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += StartSceneMusic;
     }
@@ -70,7 +72,6 @@ public class AudioManager : MonoBehaviour
         }
 
         _audioSource.pitch = Mathf.Lerp(_audioSource.pitch, pitchTarget, Time.deltaTime);
-
     }
 
     private void OnDestroy()
@@ -92,4 +93,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayAnimalGiveSound(bool success)
+    {
+        if (success)
+            _audioSource.PlayOneShot(_successSound);
+        else
+        {
+            _audioSource.PlayOneShot(_failSound);
+        }
+    }
 }

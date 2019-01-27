@@ -47,6 +47,9 @@ MonoBehaviour:
   mainMusic: {fileID: 8300000, guid: ef198739bcde64857a21d51b501e0e2c, type: 3}
   creditsMusic: {fileID: 8300000, guid: acb99bc1a36514399856fdd7e5a6a1f0, type: 3}
   _audioSource: {fileID: 2135718101096228805}
+  _blobSound: {fileID: 8300000, guid: 144c7719cf7dc489dbc7fa6ad87b5ae4, type: 3}
+  _successSound: {fileID: 8300000, guid: 40206763a00fd4657a354ca0c0a007db, type: 3}
+  _failSound: {fileID: 8300000, guid: b6a94c50eccf24ac99f2e1b215489f46, type: 3}
   FeverSoundsOn: 0
   FeverAmount: 0
 --- !u!82 &2135718101096228805
