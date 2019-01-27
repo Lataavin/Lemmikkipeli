@@ -1325,7 +1325,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TouchEffectPrfab
       value: 
-      objectReference: {fileID: 7335004478746585604, guid: 832b25820f48b0541beae562f436a111,
+      objectReference: {fileID: 8105449392634956804, guid: b64ac391f7abb474f970c962d2645425,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fcd5c134fa4041d8a7923f0a47e5479, type: 3}

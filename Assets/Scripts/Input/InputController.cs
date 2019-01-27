@@ -131,6 +131,10 @@ public class InputController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                if (TouchEffectPrfab != null)
+                {
+                    Instantiate(TouchEffectPrfab, Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10)), TouchEffectPrfab.transform.localRotation);
+                }
                 TouchD newTouch = new TouchD();
                 newTouch.fingerId = -1;
                 newTouch.startPoint = Input.mousePosition;
@@ -231,7 +235,7 @@ public class InputController : MonoBehaviour
     {
         if (t.creature == null)
         {
-            if (Mathf.Abs(t.startPoint.x - t.curPoint.x) / Screen.width <= Screen.width / 7f) { return; }
+           // if (Mathf.Abs(t.startPoint.x - t.curPoint.x) / Screen.width <= Screen.width / 7f) { return; }
             extraVelocity = ((t.startPoint.x - t.curPoint.x) / Screen.width) / t.duration;
             extraVelocityDir = extraVelocity / Mathf.Abs(extraVelocity);
             extraVelocity = Mathf.Abs(extraVelocity);

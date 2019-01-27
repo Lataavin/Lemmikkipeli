@@ -406,6 +406,8 @@ MonoBehaviour:
   hpPivot: {fileID: 4527359055851602081}
   hpBar: {fileID: 9221296794492776546}
   distform: {fileID: 6438542891686987415}
+  HeartEffectPrfab: {fileID: 2447637498319535681, guid: 2a1ad8aefab96f3429dee04efd147371,
+    type: 3}
   _animator: {fileID: 6910909498632987355}
   _angryParticle: {fileID: 5822442311238985174}
   _angryCurve:
@@ -750,11 +752,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4167993584799991648}
     m_Modifications:
-    - target: {fileID: 7335004478746585604, guid: 832b25820f48b0541beae562f436a111,
-        type: 3}
-      propertyPath: m_Name
-      value: Puff_Prefab
-      objectReference: {fileID: 0}
     - target: {fileID: 7388357702983075283, guid: 832b25820f48b0541beae562f436a111,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -809,6 +806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7335004478746585604, guid: 832b25820f48b0541beae562f436a111,
+        type: 3}
+      propertyPath: m_Name
+      value: Puff_Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 832b25820f48b0541beae562f436a111, type: 3}

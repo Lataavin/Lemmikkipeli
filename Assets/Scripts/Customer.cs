@@ -21,6 +21,8 @@ public class Customer : MonoBehaviour
 
     public Transform distform;
 
+    public GameObject HeartEffectPrfab;
+
     [SerializeField]
     private Animator _animator;
     [SerializeField]
@@ -96,6 +98,10 @@ public class Customer : MonoBehaviour
         CustomerManager.instance.NextCustomer(this);
         if (happy)
         {
+            if (HeartEffectPrfab != null)
+            {
+                Instantiate(HeartEffectPrfab, distform.position, HeartEffectPrfab.transform.localRotation);
+            }
             WorldManager.instance.ReputationScore += 1;
             WorldManager.instance.ExtraScore += 1;
             WorldManager.instance.ShowCombo();
@@ -108,7 +114,8 @@ public class Customer : MonoBehaviour
             WorldManager.instance.ExtraScore = 0;
             WorldManager.instance.SetFever();
         }
-
+        wantRendGameObject.SetActive(false);
+        hpPivot.gameObject.SetActive(false);
         GetComponentInChildren<DieMe>().Launch();
         this.enabled = false;
     }
