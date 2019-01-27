@@ -92,7 +92,7 @@ public class CustomerManager : MonoBehaviour
 
     public void CheckDistance(TouchD t, Transform trans)
     {
-        if(Vector2.Distance(trans.position,Customers[0].distform.position) <= customerToCreatureDistance)
+        if (Vector2.Distance(trans.position,Customers[0].distform.position) <= customerToCreatureDistance)
         {
             TryMatch(t);
         }

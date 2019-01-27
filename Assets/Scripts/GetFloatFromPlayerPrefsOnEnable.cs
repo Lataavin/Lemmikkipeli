@@ -11,6 +11,6 @@ public class GetFloatFromPlayerPrefsOnEnable : MonoBehaviour
 
     public void OnEnable()
     {
-        _text.text = PlayerPrefs.GetFloat(_id, 0).ToString();
+        _text.text = PlayerPrefs.GetInt(_id, 0).ToString();
     }
 }

@@ -28,7 +28,7 @@ public class Customer : MonoBehaviour
 
     public void OnInstantiate()
     {
-        transform.localPosition = new Vector3(200, 0, 0);
+        transform.localPosition = new Vector3(WorldManager.instance.worldSize * 1.2f, 0, 0);
         CustomerManager.instance.Customers.Add(this);
         CheckWant();
         isInstantiated = true;
@@ -81,9 +81,8 @@ public class Customer : MonoBehaviour
             WorldManager.instance.ReputationScore += 1;
             WorldManager.instance.ExtraScore += 1;
             WorldManager.instance.GameScore += 1 + WorldManager.instance.ExtraScore;
-            Debug.Log("Score:" + WorldManager.instance.GameScore);
         }
-        else { WorldManager.instance.ReputationScore -= 4; WorldManager.instance.ExtraScore = 0; }
+        else { WorldManager.instance.ReputationScore -= 1; WorldManager.instance.ExtraScore = 0; }
 
         GetComponentInChildren<DieMe>().Launch();
         this.enabled = false;

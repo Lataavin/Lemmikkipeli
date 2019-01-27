@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
@@ -19,7 +20,10 @@ public class WorldManager : MonoBehaviour
         //   DontDestroyOnLoad(gameObject);
     }
 
-
+    void Start()
+    {
+        PlayerPrefs.SetInt("Score", 0);
+    }
     public float worldSize;
 
     public UnityEvent OnLose;
@@ -30,6 +34,7 @@ public class WorldManager : MonoBehaviour
     public int GameScore = 0;
     public void RipCamera()
     {
-        Destroy(Camera.main);
+        PlayerPrefs.SetInt("Score", GameScore);
+        SceneManager.LoadScene("EndScene");
     }
 }
