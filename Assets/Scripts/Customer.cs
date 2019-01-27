@@ -101,7 +101,9 @@ public class Customer : MonoBehaviour
         {
             if (HeartEffectPrfab != null)
             {
-                Instantiate(HeartEffectPrfab, distform.position, HeartEffectPrfab.transform.localRotation);
+                Instantiate(HeartEffectPrfab, distform.position, HeartEffectPrfab.transform.localRotation);                    
+                AudioManager.instance.PlayAnimalGiveSound(true);
+
             }
             WorldManager.instance.ReputationScore += 1;
             WorldManager.instance.ExtraScore += 1;
@@ -119,7 +121,6 @@ public class Customer : MonoBehaviour
             WorldManager.instance.ExtraScore = 0;
             WorldManager.instance.SetFever();
         }
-        AudioManager.instance.PlayAnimalGiveSound(happy);
         wantRendGameObject.SetActive(false);
         hpPivot.gameObject.SetActive(false);
         GetComponentInChildren<DieMe>().Launch();

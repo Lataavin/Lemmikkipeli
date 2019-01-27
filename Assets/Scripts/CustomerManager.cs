@@ -74,6 +74,7 @@ public class CustomerManager : MonoBehaviour
                 if (MistakeEffectPrfab != null)
                 {
                     Instantiate(MistakeEffectPrfab, Customers[0].distform.position, MistakeEffectPrfab.transform.localRotation);
+                    AudioManager.instance.PlayAnimalGiveSound(false);
                 }
             }
             InputController.instance.AbortTouch(t);
