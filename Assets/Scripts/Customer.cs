@@ -28,10 +28,10 @@ public class Customer : MonoBehaviour
 
     public void OnInstantiate()
     {
+        transform.localPosition = new Vector3(200, 0, 0);
         CustomerManager.instance.Customers.Add(this);
         CheckWant();
         isInstantiated = true;
-        this.enabled = false;
         wantRendGameObject.SetActive(false);
         CustomerManager.instance.CustomerData.SetCustomerVisuals(myRend);
     }
@@ -44,10 +44,25 @@ public class Customer : MonoBehaviour
         }
     }
 
+    private bool firstCustomer = false;
     void Update()
     {
-        PatienceTimer += Time.deltaTime / patience;
-        _animator.SetFloat(_anmAngryness, Mathf.Clamp01(PatienceTimer));
+        if (firstCustomer)
+        {
+            PatienceTimer += Time.deltaTime / patience;
+            _animator.SetFloat(_anmAngryness, Mathf.Clamp01(PatienceTimer));
+
+        }
+        if (aPhase < 1)
+        {
+            aPhase += Time.deltaTime;
+            if (aPhase >= 1) { aPhase = 1; }
+            transform.localPosition = new Vector3(Mathf.Lerp(aAngle, bAngle, aPhase), 0, 0);
+            if (aPhase >= 1)
+            {
+                aPhase += 98;
+            }
+        }
     }
 
     public void CheckWant()
@@ -74,10 +89,15 @@ public class Customer : MonoBehaviour
         this.enabled = false;
     }
 
+    private float aAngle = 0;
+    private float bAngle = 0;
+    private float aPhase = 99;
     public void MoveStep(int nr, float angle)
     {
         myRend.sortingOrder = -3000 - nr;
-        transform.localPosition = new Vector3(angle, 0, 0);
+        aAngle = transform.localPosition.x;
+        bAngle = angle;
+        aPhase = 0;
     }
 
     public void SetFirst()
@@ -89,7 +109,7 @@ public class Customer : MonoBehaviour
         hpBar.enabled = true;
         hpBar.color = CustomerManager.instance.GetHpColor(0);
 
-        this.enabled = true;
+        firstCustomer = true;
     }
 
     public void UpdateHp()
