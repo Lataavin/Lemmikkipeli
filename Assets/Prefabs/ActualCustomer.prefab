@@ -408,6 +408,10 @@ MonoBehaviour:
   distform: {fileID: 6438542891686987415}
   HeartEffectPrfab: {fileID: 2447637498319535681, guid: 2a1ad8aefab96f3429dee04efd147371,
     type: 3}
+  MistakeEffectPrfab: {fileID: 8847991932554174705, guid: 92f27a69b9975aa44b2d09106c974ac8,
+    type: 3}
+  AngryEffectPrfab: {fileID: 7206182381785649461, guid: e25f307c568658f4b9258c79ca60c414,
+    type: 3}
   _animator: {fileID: 6910909498632987355}
   _angryParticle: {fileID: 5822442311238985174}
   _angryCurve:

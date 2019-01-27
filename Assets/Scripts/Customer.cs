@@ -22,6 +22,7 @@ public class Customer : MonoBehaviour
     public Transform distform;
 
     public GameObject HeartEffectPrfab;
+    public GameObject AngryEffectPrfab;
 
     [SerializeField]
     private Animator _animator;
@@ -110,6 +111,10 @@ public class Customer : MonoBehaviour
         }
         else
         {
+            if (AngryEffectPrfab != null)
+            {
+                Instantiate(AngryEffectPrfab, distform.position, AngryEffectPrfab.transform.localRotation);
+            }
             WorldManager.instance.ReputationScore -= 1;
             WorldManager.instance.ExtraScore = 0;
             WorldManager.instance.SetFever();

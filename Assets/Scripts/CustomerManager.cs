@@ -33,6 +33,7 @@ public class CustomerManager : MonoBehaviour
     public AnimationCurve hpW;
 
     public float customerToCreatureDistance = 1f;
+    public GameObject MistakeEffectPrfab;
 
     public Color32 GetHpColor(float p)
     {
@@ -70,6 +71,10 @@ public class CustomerManager : MonoBehaviour
                 t.creature.Drop(t);
                 Customers[0].PatienceTimer *= falsePetMultiply;
                 Customers[0].PatienceTimer += falsePetSubtract;
+                if (MistakeEffectPrfab != null)
+                {
+                    Instantiate(MistakeEffectPrfab, Customers[0].distform.position, MistakeEffectPrfab.transform.localRotation);
+                }
             }
             InputController.instance.AbortTouch(t);
         }

@@ -361,6 +361,36 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306711, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306711, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306711, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306712, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 258
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306712, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886605145653306712, guid: d26418fc02c89e941819582fc66884fe,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d26418fc02c89e941819582fc66884fe, type: 3}
 --- !u!224 &648905371 stripped
@@ -576,8 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CustomerData: {fileID: 11400000, guid: 0abdbed8b7614394ab731e10e37286cd, type: 2}
-  falsePetMultiply: 1
-  falsePetSubtract: 1
+  falsePetMultiply: 1.2
+  falsePetSubtract: 0
   customerAngle: 10
   hpR:
     serializedVersion: 2
@@ -676,6 +706,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   customerToCreatureDistance: 5
+  MistakeEffectPrfab: {fileID: 8847991932554174705, guid: 92f27a69b9975aa44b2d09106c974ac8,
+    type: 3}
 --- !u!114 &1225388952
 MonoBehaviour:
   m_ObjectHideFlags: 0
