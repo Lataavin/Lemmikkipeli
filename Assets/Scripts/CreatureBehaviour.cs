@@ -42,7 +42,7 @@ public class CreatureBehaviour : MonoBehaviour
             Vector2 temp = new Vector2(hiddenForce.x, hiddenForce.y);
             if (hiddenForce.x != 0)
             {
-                hiddenForce = new Vector2(hiddenForce.x - (Time.deltaTime * hiddenForceReduction), hiddenForce.y - (Time.deltaTime * hiddenForceReduction));
+                hiddenForce = new Vector2(hiddenForce.x -((hiddenForce.x/Mathf.Abs(hiddenForce.x))*(Time.deltaTime * hiddenForceReduction/2)), hiddenForce.y - (Time.deltaTime * hiddenForceReduction));
             }
             else
             {
