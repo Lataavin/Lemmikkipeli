@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     
     [SerializeField]
     private AudioSource _audioSource;
+    
+    [SerializeField]
+    private AudioClip _blobSound;
 
     public bool FeverSoundsOn;
     public float FeverAmount = 0.0f;
@@ -73,6 +76,20 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= StartSceneMusic;
+    }
+
+    public void PlayBlobSound()
+    {
+        _audioSource.PlayOneShot(_blobSound);
+    }
+
+    public void PlayCreatureSound(string animalAnimName)
+    {
+        var animalSound = CreatureManager.instance.animData.GetAnimalSound(animalAnimName);
+        if (animalSound != null)
+        {
+            _audioSource.PlayOneShot(animalSound);
+        }
     }
 
 }

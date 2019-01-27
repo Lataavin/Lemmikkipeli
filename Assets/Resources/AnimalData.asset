@@ -41,4 +41,17 @@ MonoBehaviour:
     Weight: 3
   - Value: {fileID: 22100000, guid: 0fb39ee6dbd0230408036c67c131e032, type: 2}
     Weight: 1
-  _defaultVisuals: {fileID: 22100000, guid: 0fb39ee6dbd0230408036c67c131e032, type: 2}
+  _defaultVisuals: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
+  _animalSounds:
+  - _animal: {fileID: 22100000, guid: e5e4302185c833f4eaf804fa4d0fed11, type: 2}
+    _pickupSound: {fileID: 8300000, guid: c27f072a69867425ba732811f6bba201, type: 3}
+  - _animal: {fileID: 22100000, guid: 6a00e6bc26fc20d4f88541abf727c6e8, type: 2}
+    _pickupSound: {fileID: 8300000, guid: 33f37b6c32d0848a4b7bef0ddf731bd8, type: 3}
+  - _animal: {fileID: 22100000, guid: 3b1230ba5ee5f364cba424e153c5cda5, type: 2}
+    _pickupSound: {fileID: 0}
+  - _animal: {fileID: 22100000, guid: 55bf5d69edb1ad546a0c677e99171deb, type: 2}
+    _pickupSound: {fileID: 0}
+  - _animal: {fileID: 22100000, guid: e792bd75ee76f6b46a9e4b4d26859528, type: 2}
+    _pickupSound: {fileID: 8300000, guid: c27f072a69867425ba732811f6bba201, type: 3}
+  - _animal: {fileID: 22100000, guid: 8b91514706a53604788b0b509b62bf58, type: 2}
+    _pickupSound: {fileID: 8300000, guid: 9fc39209253a54846865a9a1bb5dab75, type: 3}
