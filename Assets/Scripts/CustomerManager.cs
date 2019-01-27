@@ -61,7 +61,7 @@ public class CustomerManager : MonoBehaviour
     {
         try
         {
-            if (t.creature.Anim.name == Customers[0].Want.Anim.name && t.creature.Rend.material.name == Customers[0].Want.Rend.material.name)
+            if (t.creature.Anim.runtimeAnimatorController.name == Customers[0].Want.Anim.runtimeAnimatorController.name && t.creature.Rend.material.name == Customers[0].Want.Rend.material.name)
             {
                 Customers[0].Leave(true);
                 t.creature.Leave();
@@ -84,6 +84,7 @@ public class CustomerManager : MonoBehaviour
     {
         Customers.Remove(c);
         TestSpawner.instance.SpawnType(spawnable.customer);
+        TestSpawner.instance.SpawnType(spawnable.creature);
         NextCustomer();
     }
 
