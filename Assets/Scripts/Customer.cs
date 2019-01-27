@@ -97,6 +97,7 @@ public class Customer : MonoBehaviour
         {
             WorldManager.instance.ReputationScore += 1;
             WorldManager.instance.ExtraScore += 1;
+            WorldManager.instance.ShowCombo();
             WorldManager.instance.GameScore += 1 + WorldManager.instance.ExtraScore;
         }
         else { WorldManager.instance.ReputationScore -= 1; WorldManager.instance.ExtraScore = 0; }

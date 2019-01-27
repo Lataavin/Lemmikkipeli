@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 public class WorldManager : MonoBehaviour
 {
     public static WorldManager instance;
+    [SerializeField]
+    private Combo _comboPrefab;
+    [SerializeField]
+    private Transform _comboPosition;
+
     void Awake()
     {
         if (instance == null)
@@ -32,6 +37,19 @@ public class WorldManager : MonoBehaviour
     public int ReputationScore { get { return reputationScore; } set { reputationScore = value; if (reputationScore <= 0) { OnLose.Invoke(); } } }
     public int ExtraScore = 0;
     public int GameScore = 0;
+
+    public void ShowCombo()
+    {
+        if (_comboPrefab == null)
+        {
+            return;
+        }
+        var combo = Instantiate(_comboPrefab);
+        combo.transform.SetParent(_comboPosition);
+        combo.transform.localPosition = Vector3.zero;
+        combo.SetCombo(ExtraScore);
+    }
+
     public void RipCamera()
     {
         PlayerPrefs.SetInt("Score", GameScore);
