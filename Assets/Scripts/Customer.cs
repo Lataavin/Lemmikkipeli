@@ -39,6 +39,7 @@ public class Customer : MonoBehaviour
         wantRendGameObject.SetActive(false);
         CustomerManager.instance.CustomerData.SetCustomerVisuals(myRend);
         _angryParticle.gameObject.SetActive(false);
+        WorldManager.instance.SetFever();
     }
 
     void Start()
@@ -98,9 +99,15 @@ public class Customer : MonoBehaviour
             WorldManager.instance.ReputationScore += 1;
             WorldManager.instance.ExtraScore += 1;
             WorldManager.instance.ShowCombo();
+            WorldManager.instance.SetFever();
             WorldManager.instance.GameScore += 1 + WorldManager.instance.ExtraScore;
         }
-        else { WorldManager.instance.ReputationScore -= 1; WorldManager.instance.ExtraScore = 0; }
+        else
+        {
+            WorldManager.instance.ReputationScore -= 1;
+            WorldManager.instance.ExtraScore = 0;
+            WorldManager.instance.SetFever();
+        }
 
         GetComponentInChildren<DieMe>().Launch();
         this.enabled = false;

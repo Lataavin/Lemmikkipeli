@@ -11,6 +11,8 @@ public class WorldManager : MonoBehaviour
     private Combo _comboPrefab;
     [SerializeField]
     private Transform _comboPosition;
+    [SerializeField]
+    private FeverMode _fever;
 
     void Awake()
     {
@@ -48,6 +50,16 @@ public class WorldManager : MonoBehaviour
         combo.transform.SetParent(_comboPosition);
         combo.transform.localPosition = Vector3.zero;
         combo.SetCombo(ExtraScore);
+    }
+
+    public void SetFever()
+    {
+        if (_fever == null)
+        {
+            return;
+        }
+        _fever.SetValue(Mathf.Clamp01(ExtraScore / 10f));
+
     }
 
     public void RipCamera()
