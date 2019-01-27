@@ -58,7 +58,7 @@ public class WorldManager : MonoBehaviour
         {
             return;
         }
-        _fever.SetValue(Mathf.Clamp01(ExtraScore / 10f));
+        _fever.SetValue(Mathf.Clamp01(ExtraScore / 5f));
 
     }
 

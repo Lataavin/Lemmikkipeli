@@ -10,6 +10,8 @@ public class FeverMode : MonoBehaviour
 
     public void SetValue(float value)
     {
-        _image.CrossFadeAlpha(value, 0.5f, true);
+        var color = _image.color;
+        color.a = value;
+        _image.color = color;
     }
 }

@@ -144,7 +144,7 @@ Shader "Fever"
 				float4 screenColor1 = tex2D( _GrabTexture, ( ase_grabScreenPosNorm + ( ( ( simplePerlin3D3 * 2.0 ) + -1.0 ) * i.ase_color.a * 0.01 ) ).xy );
 				float mulTime18 = _Time.y * 0.3;
 				float2 temp_cast_2 = (frac( mulTime18 )).xx;
-				float4 clampResult20 = clamp( ( tex2D( _TextureSample0, temp_cast_2 ) * i.ase_color.a * 0.33 ) , float4( 0,0,0,0 ) , float4( 1,1,1,0 ) );
+				float4 clampResult20 = clamp( ( tex2D( _TextureSample0, temp_cast_2 ) * i.ase_color.a * 0.1 ) , float4( 0,0,0,0 ) , float4( 1,1,1,0 ) );
 				
 				
 				finalColor = ( screenColor1 + clampResult20 );
@@ -159,7 +159,7 @@ Shader "Fever"
 }
 /*ASEBEGIN
 Version=16200
-90;100;1349;784;1417.599;-23.84168;1.3;True;True
+90;88;1349;796;1200.495;17.75832;1.3;True;True
 Node;AmplifyShaderEditor.GrabScreenPosition;2;-2043.527,-148.1632;Float;False;0;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;10;-1696.13,377.4304;Float;False;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT4;2,2,0,0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.SimpleTimeNode;6;-1993.974,142.1422;Float;False;1;0;FLOAT;0.3;False;1;FLOAT;0
@@ -168,13 +168,13 @@ Node;AmplifyShaderEditor.NoiseGeneratorNode;3;-1328.974,207.1422;Float;True;Simp
 Node;AmplifyShaderEditor.RangedFloatNode;14;-1109.956,369.1698;Float;False;Constant;_Float0;Float 0;0;0;Create;True;0;0;False;0;2;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-918.6555,228.2874;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;18;-964.3233,765.9805;Float;False;1;0;FLOAT;0.3;False;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleAddOpNode;15;-760.5119,248.6927;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;-1;False;1;FLOAT;0
+Node;AmplifyShaderEditor.VertexColorNode;11;-870.4937,368.2561;Float;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FractNode;22;-748.9021,771.3414;Float;False;1;0;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;16;-858.829,577.0682;Float;False;Constant;_Float1;Float 1;0;0;Create;True;0;0;False;0;0.01;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.VertexColorNode;11;-870.4937,368.2561;Float;False;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.SimpleAddOpNode;15;-760.5119,248.6927;Float;False;2;2;0;FLOAT;0;False;1;FLOAT;-1;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SamplerNode;17;-598.99,681.0479;Float;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;False;0;05c92dab0b56d1849b97dc10d18e295c;05c92dab0b56d1849b97dc10d18e295c;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.RangedFloatNode;23;-470.7022,874.0414;Float;False;Constant;_Float2;Float 2;1;0;Create;True;0;0;False;0;0.33;0;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SamplerNode;17;-598.99,681.0479;Float;True;Property;_TextureSample0;Texture Sample 0;0;0;Create;True;0;0;False;0;None;None;True;0;False;white;Auto;False;Object;-1;Auto;Texture2D;6;0;SAMPLER2D;;False;1;FLOAT2;0,0;False;2;FLOAT;0;False;3;FLOAT2;0,0;False;4;FLOAT2;0,0;False;5;FLOAT;1;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;5;-605.9147,180.1173;Float;True;3;3;0;FLOAT;0;False;1;FLOAT;0.1;False;2;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;23;-488.902,880.5413;Float;False;Constant;_Float2;Float 2;1;0;Create;True;0;0;False;0;0.1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;4;-386.5,75;Float;True;2;2;0;FLOAT4;0,0,0,0;False;1;FLOAT;0;False;1;FLOAT4;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;19;-146.8849,559.5605;Float;False;3;3;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ClampOpNode;20;19.07796,545.9339;Float;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,0;False;1;COLOR;0
@@ -187,8 +187,8 @@ WireConnection;7;1;10;0
 WireConnection;3;0;7;0
 WireConnection;13;0;3;0
 WireConnection;13;1;14;0
-WireConnection;22;0;18;0
 WireConnection;15;0;13;0
+WireConnection;22;0;18;0
 WireConnection;17;1;22;0
 WireConnection;5;0;15;0
 WireConnection;5;1;11;4
@@ -204,4 +204,4 @@ WireConnection;21;0;1;0
 WireConnection;21;1;20;0
 WireConnection;9;0;21;0
 ASEEND*/
-//CHKSM=AFA08402BE8EF043E39D7F2AFC4C319DD1DDFA95
+//CHKSM=22D538866338AABB15A58F3127AB23E6DB145E78
