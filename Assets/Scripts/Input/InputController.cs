@@ -39,6 +39,11 @@ public class InputController : MonoBehaviour
         }
         //   DontDestroyOnLoad(gameObject);
         _camera = Camera.main;
+
+        isMobile = false;
+#if UNITY_ANDROID || UNITY_IPHONE || UNITY_IOS
+        //isMobile = true;
+#endif
     }
 
     public void Update()
@@ -49,129 +54,124 @@ public class InputController : MonoBehaviour
     private float extraVelocity = 0;
     private float extraVelocityDir = 1;
     private float velocity = 0.0f;
+    private bool isMobile = false;
     private void UpdateInput()
     {
         velocity = 0f;
 
-        #if UNITY_ANDROID || UNITY_IPHONE || UNITY_IOS
 
-             /*   if (Input.touches.Length > 0)
-                {
-                    var touchDelta = Input.touches[0].deltaPosition;
-                    velocity = touchDelta.x * -TurningMultiplier;
-                }*/
-                foreach (Touch t in Input.touches)
-                {
-                    switch (t.phase)
+        foreach (Touch t in Input.touches)
+        {
+            switch (t.phase)
+            {
+                case TouchPhase.Began:
+                    if (TouchEffectPrfab != null)
                     {
-                        case TouchPhase.Began:
-                            if (TouchEffectPrfab != null)
+                        Instantiate(TouchEffectPrfab, Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y, 10)), TouchEffectPrfab.transform.localRotation);
+                    }
+                    TouchD newTouch = new TouchD();
+                    newTouch.fingerId = t.fingerId;
+                    newTouch.startPoint = t.position;
+                    newTouch.prevPoint = t.position;
+                    newTouch.curPoint = t.position;
+                    newTouch.duration = 0;
+                    newTouch.creature = TryRay(t.position);
+                    if (newTouch.creature == null) { extraVelocity = 0; }
+                    else
+                    {
+                        newTouch.creature.Grab(newTouch);
+                    }
+                    touches.Add(newTouch);
+                    break;
+
+                case TouchPhase.Stationary:
+                case TouchPhase.Moved:
+                    for (int i = 0; i < touches.Count; i++)
+                    {
+                        if (touches[i].fingerId == t.fingerId)
+                        {
+                            touches[i].prevPoint = touches[i].curPoint;
+                            touches[i].curPoint = t.position;
+                            touches[i].duration += Time.deltaTime;
+                            if (touches[i].creature == null)
                             {
-                                Instantiate(TouchEffectPrfab, Camera.main.ScreenToWorldPoint(new Vector3(t.position.x, t.position.y, 10)), TouchEffectPrfab.transform.localRotation);
+                                velocity = ((touches[i].prevPoint.x - touches[i].curPoint.x) / ((float)Screen.width / 2)) * TurningMultiplier;
+                                TurnCamera(velocity);
                             }
-                            TouchD newTouch = new TouchD();
-                            newTouch.fingerId = t.fingerId;
-                            newTouch.startPoint = t.position;
-                            newTouch.prevPoint = t.position;
-                            newTouch.curPoint = t.position;
-                            newTouch.duration = 0;
-                            newTouch.creature = TryRay(t.position);
-                            if (newTouch.creature == null) { extraVelocity = 0; }
                             else
                             {
-                                newTouch.creature.Grab(newTouch);
-                            }
-                            touches.Add(newTouch);
-                            break;
-
-                        case TouchPhase.Stationary:
-                        case TouchPhase.Moved:
-                            for (int i = 0; i < touches.Count; i++)
-                            {
-                                if (touches[i].fingerId == t.fingerId)
-                                {
-                                    touches[i].prevPoint = touches[i].curPoint;
-                                    touches[i].curPoint = t.position;
-                                    touches[i].duration += Time.deltaTime;
-                                    if (touches[i].creature == null)
-                                    {
-                                        velocity = (touches[i].prevPoint.x - touches[i].curPoint.x) * TurningMultiplier;
-                                        TurnCamera(velocity);
-                                    }
-                                    else
-                                    {
-                        velocity = GrabMove(touches[i]);
-                                        touches[i].creature.Move(touches[i]);
-                                    }
-                                    break;
-                                }
+                                velocity = GrabMove(touches[i]);
+                                touches[i].creature.Move(touches[i]);
                             }
                             break;
-
-                        case TouchPhase.Canceled:
-                        case TouchPhase.Ended:
-                            for (int i = touches.Count - 1; i >= 0; i--)
-                            {
-                                if (touches[i].fingerId == t.fingerId)
-                                {
-                                    touches[i].prevPoint = touches[i].curPoint;
-                                    touches[i].curPoint = t.position;
-                                    touches[i].duration += Time.deltaTime;
-                                    EndTouch(touches[0]);
-                                    touches.RemoveAt(i);
-                                    break;
-                                }
-                            }
-                            break;
+                        }
                     }
+                    break;
+
+                case TouchPhase.Canceled:
+                case TouchPhase.Ended:
+                    for (int i = touches.Count - 1; i >= 0; i--)
+                    {
+                        if (touches[i].fingerId == t.fingerId)
+                        {
+                            touches[i].prevPoint = touches[i].curPoint;
+                            touches[i].curPoint = t.position;
+                            touches[i].duration += Time.deltaTime;
+                            EndTouch(touches[0]);
+                            touches.RemoveAt(i);
+                            break;
+                        }
+                    }
+                    break;
+            }
+        }
+
+        if (touches.Count == 0 && !isMobile)
+        {
+            print("not mobile");
+            if (Input.GetMouseButtonDown(0))
+            {
+                TouchD newTouch = new TouchD();
+                newTouch.fingerId = -1;
+                newTouch.startPoint = Input.mousePosition;
+                newTouch.prevPoint = Input.mousePosition;
+                newTouch.curPoint = Input.mousePosition;
+                newTouch.duration = 0;
+                newTouch.creature = TryRay(Input.mousePosition);
+                if (newTouch.creature == null) { extraVelocity = 0; }
+                else
+                {
+                    newTouch.creature.Grab(newTouch);
                 }
-        #else
+                touches.Add(newTouch);
+            }
+            if (Input.GetMouseButton(0) && touches.Count > 0)
+            {
+                touches[0].prevPoint = touches[0].curPoint;
+                touches[0].curPoint = Input.mousePosition;
+                touches[0].duration += Time.deltaTime;
+                if (touches[0].creature == null)
+                {
+                    velocity = ((touches[0].prevPoint.x - touches[0].curPoint.x) / ((float)Screen.width/2)) * TurningMultiplier;
+                }
+                else
+                {
+                    velocity = GrabMove(touches[0]);
+                    touches[0].creature.Move(touches[0]);
+                }
+            }
+            if (Input.GetMouseButtonUp(0) && touches.Count > 0)
+            {
+                touches[0].prevPoint = touches[0].curPoint;
+                touches[0].curPoint = Input.mousePosition;
+                touches[0].duration += Time.deltaTime;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            TouchD newTouch = new TouchD();
-            newTouch.fingerId = -1;
-            newTouch.startPoint = Input.mousePosition;
-            newTouch.prevPoint = Input.mousePosition;
-            newTouch.curPoint = Input.mousePosition;
-            newTouch.duration = 0;
-            newTouch.creature = TryRay(Input.mousePosition);
-            if (newTouch.creature == null) { extraVelocity = 0; }
-            else
-            {
-                newTouch.creature.Grab(newTouch);
-            }
-            touches.Add(newTouch);
-        }
-        if (Input.GetMouseButton(0) && touches.Count > 0)
-        {
-            touches[0].prevPoint = touches[0].curPoint;
-            touches[0].curPoint = Input.mousePosition;
-            touches[0].duration += Time.deltaTime;
-            if (touches[0].creature == null)
-            {
-                velocity = (touches[0].prevPoint.x - touches[0].curPoint.x) * TurningMultiplier;
-            }
-            else
-            {
-                velocity = GrabMove(touches[0]);
-                touches[0].creature.Move(touches[0]);
+                EndTouch(touches[0]);
+
+                touches.RemoveAt(0);
             }
         }
-        if (Input.GetMouseButtonUp(0) && touches.Count > 0)
-        {
-            touches[0].prevPoint = touches[0].curPoint;
-            touches[0].curPoint = Input.mousePosition;
-            touches[0].duration += Time.deltaTime;
-
-            EndTouch(touches[0]);
-
-            touches.RemoveAt(0);
-        }
-        #endif
         TurnCamera(velocity);
-
-
     }
 
     public void CheckSwipeControl()
@@ -223,7 +223,7 @@ public class InputController : MonoBehaviour
         if (temp < 0) { temp /= touches[0].startPoint.x; }
         else if (temp > 0) { temp /= (Screen.width - touches[0].startPoint.x); }
         else { temp = 0; }
-        
+
         return temp * grabMoveMultiplier;
     }
 
@@ -231,6 +231,7 @@ public class InputController : MonoBehaviour
     {
         if (t.creature == null)
         {
+            if (Mathf.Abs(t.startPoint.x - t.curPoint.x) / Screen.width <= Screen.width / 7f) { return; }
             extraVelocity = ((t.startPoint.x - t.curPoint.x) / Screen.width) / t.duration;
             extraVelocityDir = extraVelocity / Mathf.Abs(extraVelocity);
             extraVelocity = Mathf.Abs(extraVelocity);

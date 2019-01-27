@@ -653,6 +653,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b215b1e62d13c448bd6f9d5564556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _comboPrefab: {fileID: 0}
+  _comboPosition: {fileID: 0}
   worldSize: 90
   OnLose:
     m_PersistentCalls:
@@ -1175,7 +1177,7 @@ PrefabInstance:
     - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
         type: 3}
       propertyPath: TurningMultiplier
-      value: 0.02
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5028818325141610291, guid: 5fcd5c134fa4041d8a7923f0a47e5479,
         type: 3}
